@@ -27,8 +27,8 @@ logger = logging.getLogger(__name__)
 
 # Page configuration
 st.set_page_config(
-    page_title="One_Blink - SOC Intelligence Framework",
-    page_icon="",
+    page_title="◈ One_Blink - SOC Intelligence Framework",
+    page_icon="◈",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -98,7 +98,8 @@ if 'analyzer' not in st.session_state:
     logger.info("Unified Analyzer initialized")
 
 # Sidebar navigation
-st.sidebar.markdown("#  SOC Intelligence")
+st.sidebar.markdown("# ◈ One_Blink")
+st.sidebar.caption("SOC Intelligence Framework")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio(
@@ -122,7 +123,7 @@ st.sidebar.caption("One_Blink v1.0 | SOC Intelligence Framework")
 
 # Main content area
 if page == "Dashboard":
-    st.markdown('<div class="main-header">One_Blink - SOC Intelligence Framework</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">◈ One_Blink - SOC Intelligence Framework</div>', unsafe_allow_html=True)
     
     st.markdown("""
     ### Welcome to One_Blink

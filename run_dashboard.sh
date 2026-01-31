@@ -1,7 +1,7 @@
 #!/bin/bash
 # Run One_Blink (SOC Intelligence Framework) Dashboard
 
-echo "One_Blink - SOC Intelligence Framework"
+echo "◈ One_Blink - SOC Intelligence Framework"
 echo "=============================="
 echo ""
 echo "Starting Streamlit dashboard..."

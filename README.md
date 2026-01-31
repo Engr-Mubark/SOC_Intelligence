@@ -1,4 +1,4 @@
-# One_Blink
+# ◈ One_Blink
 
 **SOC Intelligence Framework - Enterprise Cybersecurity Analysis Platform**
 
