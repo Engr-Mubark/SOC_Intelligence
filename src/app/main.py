@@ -49,6 +49,11 @@ st.markdown("""
     header {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     
+    /* Hide any text containing 'Streamlit' */
+    div:contains("Streamlit") {display: none !important;}
+    span:contains("Streamlit") {display: none !important;}
+    p:contains("Streamlit") {display: none !important;}
+    
     .main-header {
         font-size: 2.5rem;
         font-weight: bold;
