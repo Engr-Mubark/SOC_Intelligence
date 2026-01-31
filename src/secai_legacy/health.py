@@ -16,15 +16,15 @@ def check_library(name):
     try:
         module = importlib.import_module(name)
         version = getattr(module, '__version__', 'unknown')
-        print(f"✅ {name:15} | Version: {version}")
+        print(f" {name:15} | Version: {version}")
         return True
     except ImportError:
-        print(f"❌ {name:15} | NOT FOUND")
+        print(f" {name:15} | NOT FOUND")
         return False
 
 def run_health_check(config_path=None):
     print("=" * 50)
-    print("🔍 SecAI Reporter - Readiness Health Check")
+    print(" SecAI Reporter - Readiness Health Check")
     print("=" * 50)
     
     # 1. Environment & Python
@@ -49,16 +49,16 @@ def run_health_check(config_path=None):
         config_path = project_root / "config" / "config.yaml"
     
     if os.path.exists(config_path):
-        print(f"✅ Config File   | {config_path}")
+        print(f" Config File   | {config_path}")
         try:
             with open(config_path, 'r') as f:
                 config = yaml.safe_load(f)
-            print("✅ Config Parsing| OK")
+            print(" Config Parsing| OK")
         except Exception as e:
-            print(f"❌ Config Parsing| FAILED: {e}")
+            print(f" Config Parsing| FAILED: {e}")
             config = None
     else:
-        print(f"❌ Config File   | NOT FOUND at {config_path}")
+        print(f" Config File   | NOT FOUND at {config_path}")
         config = None
         
     # 4. CPU / AI Resources
@@ -71,19 +71,19 @@ def run_health_check(config_path=None):
         if config and 'llm' in config:
             m_path = config['llm'].get('model_path')
             if m_path and os.path.exists(m_path):
-                print(f"✅ LLM Model     | Found at {m_path}")
+                print(f" LLM Model     | Found at {m_path}")
             else:
-                print(f"⚠️  LLM Model     | Not found at path: {m_path}")
+                print(f"  LLM Model     | Not found at path: {m_path}")
     except:
-        print("❌ Torch Resources check failed")
+        print(" Torch Resources check failed")
 
     # 5. Connectors (Dry Run)
     print("\n[5] Database Connectors (Import Test)")
     try:
         from secai_reporter.connectors import PostgresDjangoConnector, ImpalaConnector
-        print("✅ Connectors    | Loaded successfully")
+        print(" Connectors    | Loaded successfully")
     except Exception as e:
-        print(f"❌ Connectors    | Load failed: {e}")
+        print(f" Connectors    | Load failed: {e}")
 
     print("\n" + "=" * 50)
     print("Health check complete.")

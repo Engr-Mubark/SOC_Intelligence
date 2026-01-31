@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 # Page configuration
 st.set_page_config(
     page_title="SOC Intelligence Platform",
-    page_icon="🛡️",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -98,12 +98,12 @@ if 'analyzer' not in st.session_state:
     logger.info("Unified Analyzer initialized")
 
 # Sidebar navigation
-st.sidebar.markdown("# 🛡️ SOC Intelligence")
+st.sidebar.markdown("#  SOC Intelligence")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio(
     "Navigate",
-    ["🏠 Dashboard", "📤 PCAP Analysis", "📊 Reports", "⚙️ Settings"],
+    [" Dashboard", " PCAP Analysis", " Reports", " Settings"],
     label_visibility="collapsed"
 )
 
@@ -112,17 +112,17 @@ st.sidebar.markdown("### System Health")
 
 # Health check
 health = st.session_state.analyzer.health_check()
-st.sidebar.success(f"✅ Database: {health['database']}")
-st.sidebar.info(f"🧠 LLM: {'Ready' if health['llm']['model_loaded'] else 'Template Mode'}")
-st.sidebar.info(f"🔍 Zeek: {'Enabled' if health['ingestion']['zeek'] else 'Disabled'}")
+st.sidebar.success(f" Database: {health['database']}")
+st.sidebar.info(f" LLM: {'Ready' if health['llm']['model_loaded'] else 'Template Mode'}")
+st.sidebar.info(f" Zeek: {'Enabled' if health['ingestion']['zeek'] else 'Disabled'}")
 st.sidebar.info(f"🚨 Snort: {'Enabled' if health['ingestion']['snort'] else 'Disabled'}")
 
 st.sidebar.markdown("---")
 st.sidebar.caption("SOC_Intelligence v1.0 | Ultimate Analysis Engine")
 
 # Main content area
-if page == "🏠 Dashboard":
-    st.markdown('<div class="main-header">🛡️ SOC Intelligence Platform</div>', unsafe_allow_html=True)
+if page == " Dashboard":
+    st.markdown('<div class="main-header"> SOC Intelligence Platform</div>', unsafe_allow_html=True)
     
     st.markdown("""
     ### Welcome to SOC Intelligence
@@ -140,7 +140,7 @@ if page == "🏠 Dashboard":
     with col1:
         st.markdown("""
         <div class="metric-card">
-            <h3>📊 Analysis Engine</h3>
+            <h3> Analysis Engine</h3>
             <p style="font-size: 1.5rem; font-weight: bold;">Ready</p>
         </div>
         """, unsafe_allow_html=True)
@@ -148,7 +148,7 @@ if page == "🏠 Dashboard":
     with col2:
         st.markdown("""
         <div class="metric-card">
-            <h3>🧠 AI Models</h3>
+            <h3> AI Models</h3>
             <p style="font-size: 1.5rem; font-weight: bold;">2 Active</p>
         </div>
         """, unsafe_allow_html=True)
@@ -156,7 +156,7 @@ if page == "🏠 Dashboard":
     with col3:
         st.markdown("""
         <div class="metric-card">
-            <h3>🎯 MITRE TTPs</h3>
+            <h3> MITRE TTPs</h3>
             <p style="font-size: 1.5rem; font-weight: bold;">10 Types</p>
         </div>
         """, unsafe_allow_html=True)
@@ -164,7 +164,7 @@ if page == "🏠 Dashboard":
     with col4:
         st.markdown("""
         <div class="metric-card">
-            <h3>📈 Detectors</h3>
+            <h3> Detectors</h3>
             <p style="font-size: 1.5rem; font-weight: bold;">5 Active</p>
         </div>
         """, unsafe_allow_html=True)
@@ -172,45 +172,45 @@ if page == "🏠 Dashboard":
     st.markdown("---")
     
     # Features overview
-    st.markdown("### 🚀 Platform Capabilities")
+    st.markdown("###  Platform Capabilities")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("#### 🔍 Analysis Features")
+        st.markdown("####  Analysis Features")
         st.markdown("""
-        - ✅ PCAP Ingestion (TShark + Zeek)
-        - ✅ TOON Normalization (L3+ only)
-        - ✅ ML Anomaly Detection
-        - ✅ MITRE ATT&CK Mapping
-        - ✅ Beaconing Detection
-        - ✅ DNS Tunneling Detection
-        - ✅ Port Scan Detection
+        -  PCAP Ingestion (TShark + Zeek)
+        -  TOON Normalization (L3+ only)
+        -  ML Anomaly Detection
+        -  MITRE ATT&CK Mapping
+        -  Beaconing Detection
+        -  DNS Tunneling Detection
+        -  Port Scan Detection
         """)
     
     with col2:
-        st.markdown("#### 📊 Reporting Features")
+        st.markdown("####  Reporting Features")
         st.markdown("""
-        - ✅ 14-Section Enterprise Reports
-        - ✅ HTML/JSON/Markdown Export
-        - ✅ Historical Correlation (75/25)
-        - ✅ Evidence-Based Analysis
-        - ✅ Confidence Scoring
-        - ✅ Executive Summaries
-        - ✅ Technical Deep Dives
+        -  14-Section Enterprise Reports
+        -  HTML/JSON/Markdown Export
+        -  Historical Correlation (75/25)
+        -  Evidence-Based Analysis
+        -  Confidence Scoring
+        -  Executive Summaries
+        -  Technical Deep Dives
         """)
     
     st.markdown("---")
     st.info("👈 Use the sidebar to navigate to PCAP Analysis or view Reports")
 
-elif page == "📤 PCAP Analysis":
+elif page == " PCAP Analysis":
     from src.app.pages import pcap_analysis
     pcap_analysis.render(st.session_state.analyzer)
 
-elif page == "📊 Reports":
+elif page == " Reports":
     from src.app.pages import reports
     reports.render(st.session_state.analyzer)
 
-elif page == "⚙️ Settings":
+elif page == " Settings":
     from src.app.pages import settings
     settings.render(st.session_state.analyzer)

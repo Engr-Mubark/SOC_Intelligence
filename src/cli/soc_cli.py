@@ -35,8 +35,8 @@ def cli():
 def analyze(pcap_file, output, ticket, db_path):
     """Analyze a PCAP file"""
     
-    click.echo(f"🔍 Analyzing: {pcap_file}")
-    click.echo(f"📊 Output format: {output}")
+    click.echo(f" Analyzing: {pcap_file}")
+    click.echo(f" Output format: {output}")
     click.echo(f"🎫 Create ticket: {ticket}")
     click.echo()
     
@@ -64,18 +64,18 @@ def analyze(pcap_file, output, ticket, db_path):
             bar.update(10)
             
         except Exception as e:
-            click.echo(f"\n❌ Analysis failed: {str(e)}", err=True)
+            click.echo(f"\n Analysis failed: {str(e)}", err=True)
             sys.exit(1)
     
     # Display results
     click.echo()
-    click.echo("✅ Analysis complete!")
+    click.echo(" Analysis complete!")
     click.echo()
-    click.echo(f"📊 Events analyzed: {result['events_count']:,}")
-    click.echo(f"🎯 TTPs detected: {len(result['ttps'])}")
-    click.echo(f"⚠️  Anomalies found: {result['anomalies']['total_anomalies']}")
+    click.echo(f" Events analyzed: {result['events_count']:,}")
+    click.echo(f" TTPs detected: {len(result['ttps'])}")
+    click.echo(f"  Anomalies found: {result['anomalies']['total_anomalies']}")
     click.echo()
-    click.echo(f"📄 Report saved: {result['report_path']}")
+    click.echo(f" Report saved: {result['report_path']}")
     
     if result.get('ticket_id'):
         click.echo(f"🎫 Ticket created: {result['ticket_id']}")
@@ -83,7 +83,7 @@ def analyze(pcap_file, output, ticket, db_path):
     # Show TTPs
     if result['ttps']:
         click.echo()
-        click.echo("🎯 Detected MITRE ATT&CK Techniques:")
+        click.echo(" Detected MITRE ATT&CK Techniques:")
         for ttp in result['ttps']:
             click.echo(f"   • {ttp['id']}: {ttp['name']} ({ttp['tactic']}) - {ttp['confidence']}")
 
@@ -113,7 +113,7 @@ def list_reports():
         click.echo("No reports found.")
         return
     
-    click.echo(f"📊 Found {len(all_reports)} reports:\n")
+    click.echo(f" Found {len(all_reports)} reports:\n")
     
     for report in all_reports:
         size_kb = report.stat().st_size / 1024
@@ -129,7 +129,7 @@ def view_report(report_file):
     report_path = Path("reports") / report_file
     
     if not report_path.exists():
-        click.echo(f"❌ Report not found: {report_file}", err=True)
+        click.echo(f" Report not found: {report_file}", err=True)
         sys.exit(1)
     
     with open(report_path, 'r') as f:
@@ -147,34 +147,34 @@ def view_report(report_file):
 def health(db_path):
     """Check system health"""
     
-    click.echo("🏥 SOC Intelligence - System Health Check\n")
+    click.echo(" SOC Intelligence - System Health Check\n")
     
     analyzer = UnifiedAnalyzer(db_path=db_path)
     health_status = analyzer.health_check()
     
     # Database
-    db_status = "✅" if health_status['database'] == 'connected' else "❌"
+    db_status = "" if health_status['database'] == 'connected' else ""
     click.echo(f"{db_status} Database: {health_status['database']}")
     
     # LLM
     llm_loaded = health_status['llm']['model_loaded']
-    llm_status = "✅" if llm_loaded else "⚠️ "
+    llm_status = "" if llm_loaded else " "
     llm_mode = "Ready" if llm_loaded else "Template Mode"
     click.echo(f"{llm_status} LLM: {llm_mode}")
     
     # Ingestion tools
-    zeek_status = "✅" if health_status['ingestion']['zeek'] else "⚠️ "
-    snort_status = "✅" if health_status['ingestion']['snort'] else "⚠️ "
+    zeek_status = "" if health_status['ingestion']['zeek'] else " "
+    snort_status = "" if health_status['ingestion']['snort'] else " "
     click.echo(f"{zeek_status} Zeek: {'Enabled' if health_status['ingestion']['zeek'] else 'Disabled'}")
     click.echo(f"{snort_status} Snort: {'Enabled' if health_status['ingestion']['snort'] else 'Disabled'}")
     
     # Components
-    click.echo("✅ TTP Mapper: Ready")
-    click.echo("✅ Anomaly Detector: Ready")
-    click.echo("✅ Report Generator: Ready")
+    click.echo(" TTP Mapper: Ready")
+    click.echo(" Anomaly Detector: Ready")
+    click.echo(" Report Generator: Ready")
     
     click.echo()
-    click.echo("🚀 System operational!")
+    click.echo(" System operational!")
 
 
 if __name__ == '__main__':

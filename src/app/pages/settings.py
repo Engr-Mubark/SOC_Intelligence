@@ -8,11 +8,11 @@ import streamlit as st
 def render(analyzer):
     """Render settings page"""
     
-    st.markdown("# ⚙️ System Settings")
+    st.markdown("#  System Settings")
     st.markdown("Configure SOC_Intelligence platform")
     
     # System Health
-    st.markdown("## 🏥 System Health")
+    st.markdown("##  System Health")
     
     health = analyzer.health_check()
     
@@ -20,24 +20,24 @@ def render(analyzer):
     
     with col1:
         st.markdown("### Core Services")
-        st.success(f"✅ Database: {health['database']}")
-        st.info(f"🧠 LLM: {'Loaded' if health['llm']['model_loaded'] else 'Template Mode'}")
+        st.success(f" Database: {health['database']}")
+        st.info(f" LLM: {'Loaded' if health['llm']['model_loaded'] else 'Template Mode'}")
         st.write(f"**Model Path**: {health['llm'].get('model_path', 'Not configured')}")
     
     with col2:
         st.markdown("### Analysis Tools")
-        zeek_status = "✅ Enabled" if health['ingestion']['zeek'] else "⚠️ Disabled"
-        snort_status = "✅ Enabled" if health['ingestion']['snort'] else "⚠️ Disabled"
+        zeek_status = " Enabled" if health['ingestion']['zeek'] else " Disabled"
+        snort_status = " Enabled" if health['ingestion']['snort'] else " Disabled"
         
         st.write(f"**Zeek**: {zeek_status}")
         st.write(f"**Snort**: {snort_status}")
-        st.success("✅ TTP Mapper: Ready")
-        st.success("✅ Anomaly Detector: Ready")
+        st.success(" TTP Mapper: Ready")
+        st.success(" Anomaly Detector: Ready")
     
     st.markdown("---")
     
     # Configuration
-    st.markdown("## 🔧 Configuration")
+    st.markdown("##  Configuration")
     
     with st.expander("Database Settings"):
         st.text_input("DuckDB Path", value="data/soc_intelligence.duckdb", disabled=True)
@@ -64,7 +64,7 @@ def render(analyzer):
     st.markdown("---")
     
     # About
-    st.markdown("## ℹ️ About")
+    st.markdown("##  About")
     
     st.markdown("""
     **SOC_Intelligence Platform**

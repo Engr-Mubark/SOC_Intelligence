@@ -170,10 +170,10 @@ Examples:
                 data = json.load(f)
             
             jsonschema.validate(instance=data, schema=schema)
-            logger.info(f"✅ JSON validation passed: {args.json_file}")
+            logger.info(f" JSON validation passed: {args.json_file}")
             sys.exit(0)
         except jsonschema.ValidationError as e:
-            logger.error(f"❌ JSON validation failed: {e.message}")
+            logger.error(f" JSON validation failed: {e.message}")
             sys.exit(1)
         except Exception as e:
             logger.error(f"Error: {e}")
@@ -198,14 +198,14 @@ Examples:
         if not schema_path.exists():
             logger.warning(f"Schema file not found: {schema_path}")
         else:
-            logger.info(f"✅ Schema file found: {schema_path}")
+            logger.info(f" Schema file found: {schema_path}")
         
         if not template_path.exists():
             logger.warning(f"Template file not found: {template_path}")
         else:
-            logger.info(f"✅ Template file found: {template_path}")
+            logger.info(f" Template file found: {template_path}")
         
-        logger.info("✅ Configuration validation passed")
+        logger.info(" Configuration validation passed")
         sys.exit(0)
     
     # Modify config based on flags
@@ -226,7 +226,7 @@ Examples:
             args.output_dir
         )
         
-        logger.info(f"✅ Report generated successfully!")
+        logger.info(f" Report generated successfully!")
         logger.info(f"   JSON: {json_path}")
         if html_path:
             logger.info(f"   HTML: {html_path}")

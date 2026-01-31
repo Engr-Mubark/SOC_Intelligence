@@ -1,4 +1,4 @@
-# 🛡️ SOC_Intelligence Platform
+#  SOC_Intelligence Platform
 
 **Unified Enterprise SOC Analysis Platform**
 
@@ -6,7 +6,7 @@ Combining the best of One_Blink and SecAI Reporter with AI-powered Ultimate Prom
 
 ---
 
-## 🎯 Overview
+##  Overview
 
 SOC_Intelligence is a comprehensive network security analysis platform that provides:
 
@@ -20,9 +20,9 @@ SOC_Intelligence is a comprehensive network security analysis platform that prov
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-### 🔍 **Analysis Capabilities**
+###  **Analysis Capabilities**
 - TOON-normalized data processing (L3+ only, no inference)
 - PyShark/TShark optimized ingestion
 - Zeek enrichment support
@@ -30,27 +30,27 @@ SOC_Intelligence is a comprehensive network security analysis platform that prov
 - Pattern recognition (beaconing, tunneling, scanning)
 - Statistical baseline analysis
 
-### 📊 **Reporting**
+###  **Reporting**
 - 14-section enterprise report structure
 - HTML, JSON, and Markdown output formats
 - Professional templates with visualizations
 - Evidence citations and confidence scoring
 - Executive summaries + technical deep dives
 
-### 🧠 **AI Integration**
+###  **AI Integration**
 - Local LLM (CPU-only, air-gapped compatible)
 - Ultimate Prompt system for consistent analysis
 - Vision AI for screenshot/artifact analysis
 - Template fallback for offline operation
 
-### 📈 **User Interfaces**
+###  **User Interfaces**
 - **Streamlit Dashboard**: Interactive web UI
 - **CLI Tool**: Command-line interface for automation
 - **API Ready**: FastAPI integration (planned)
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Installation
 
@@ -94,7 +94,7 @@ python src/cli/soc_cli.py health
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 SOC_Intelligence/
@@ -121,7 +121,7 @@ SOC_Intelligence/
 
 ---
 
-## 🔧 Configuration
+##  Configuration
 
 ### Database
 - **DuckDB**: Local fast storage (`data/soc_intelligence.duckdb`)
@@ -152,7 +152,7 @@ SNORT_ENABLED=true
 
 ---
 
-## 📊 Workflow
+##  Workflow
 
 ```
 PCAP File
@@ -174,7 +174,7 @@ HTML/JSON/MD Report + SOC Ticket
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 # Run validation tests
@@ -205,7 +205,7 @@ Token-Oriented Object Notation for network events:
 
 ---
 
-## 🛠️ Dependencies
+## 🛠 Dependencies
 
 Core:
 - Python 3.11+
@@ -222,7 +222,7 @@ Optional:
 
 ---
 
-## 🎓 Architecture
+##  Architecture
 
 ### Components Merged
 
@@ -267,7 +267,7 @@ Optional:
 
 ---
 
-## 📝 Usage Examples
+##  Usage Examples
 
 ### Example 1: Analyze PCAP via UI
 1. Launch dashboard: `./run_dashboard.sh`
@@ -309,13 +309,13 @@ This is a unified platform built from:
 
 ---
 
-## 📄 License
+##  License
 
 See individual component licenses in legacy folders.
 
 ---
 
-## 🎯 Roadmap
+##  Roadmap
 
 - [ ] FastAPI REST API
 - [ ] Real-time streaming analysis
@@ -326,7 +326,7 @@ See individual component licenses in legacy folders.
 
 ---
 
-## 💡 Credits
+##  Credits
 
 **SOC_Intelligence Platform v1.0**
 
@@ -335,7 +335,7 @@ Built with: Python, Streamlit, DuckDB, Transformers
 
 ---
 
-## 📞 Support
+##  Support
 
 For issues and questions, check:
 - Documentation: `docs/`
@@ -344,4 +344,4 @@ For issues and questions, check:
 
 ---
 
-**🛡️ SOC_Intelligence - Enterprise SOC Analysis, Simplified**
+** SOC_Intelligence - Enterprise SOC Analysis, Simplified**

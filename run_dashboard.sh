@@ -1,7 +1,7 @@
 #!/bin/bash
 # Run SOC_Intelligence Streamlit Dashboard
 
-echo "🛡️  SOC Intelligence Platform"
+echo "  SOC Intelligence Platform"
 echo "=============================="
 echo ""
 echo "Starting Streamlit dashboard..."

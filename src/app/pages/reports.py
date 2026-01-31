@@ -10,7 +10,7 @@ import json
 def render(analyzer):
     """Render reports page"""
     
-    st.markdown("# 📊 Analysis Reports")
+    st.markdown("#  Analysis Reports")
     st.markdown("View and download generated SOC intelligence reports")
     
     # Check for reports
@@ -34,7 +34,7 @@ def render(analyzer):
         st.info("No reports found. Generate one by analyzing a PCAP file.")
         return
     
-    st.markdown(f"### 📁 Total Reports: {len(all_reports)}")
+    st.markdown(f"###  Total Reports: {len(all_reports)}")
     
     # Filter by format
     format_filter = st.selectbox(
@@ -49,7 +49,7 @@ def render(analyzer):
         if format_filter != "All" and ext != format_filter:
             continue
         
-        with st.expander(f"📄 {report_path.name} ({report_path.stat().st_size / 1024:.1f} KB)"):
+        with st.expander(f" {report_path.name} ({report_path.stat().st_size / 1024:.1f} KB)"):
             col1, col2, col3 = st.columns([2, 1, 1])
             
             with col1:
@@ -70,7 +70,7 @@ def render(analyzer):
             
             with col3:
                 # Delete button
-                if st.button("🗑️ Delete", key=f"del_{report_path.name}"):
+                if st.button(" Delete", key=f"del_{report_path.name}"):
                     report_path.unlink()
                     st.success(f"Deleted: {report_path.name}")
                     st.rerun()
