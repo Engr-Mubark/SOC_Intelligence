@@ -205,13 +205,13 @@ if page == "Dashboard":
     st.info("👈 Use the sidebar to navigate to PCAP Analysis or view Reports")
 
 elif page == " PCAP Analysis":
-    from src.app.pages import pcap_analysis
+    from app.pages import pcap_analysis
     pcap_analysis.render(st.session_state.analyzer)
 
 elif page == " Reports":
-    from src.app.pages import reports
+    from app.pages import reports
     reports.render(st.session_state.analyzer)
 
 elif page == " Settings":
-    from src.app.pages import settings
+    from app.pages import settings
     settings.render(st.session_state.analyzer)
