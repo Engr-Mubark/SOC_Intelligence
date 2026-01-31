@@ -4,10 +4,10 @@
 echo "◈ One_Blink - SOC Intelligence Framework"
 echo "=============================="
 echo ""
-echo "Starting Streamlit dashboard..."
+echo "Starting dashboard..."
 echo ""
 
-# Navigate to project root
+# Run the dashboardte to project root
 cd "$(dirname "$0")"
 
 # Activate virtual environment if it exists

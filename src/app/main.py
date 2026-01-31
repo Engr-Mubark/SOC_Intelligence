@@ -1,10 +1,10 @@
 """
-SOC_Intelligence - Main Streamlit Application
+◈ One_Blink - Main Dashboard Application
 
-Unified dashboard combining:
-- One_Blink: Live PCAP analysis, interactive charts
-- SecAI: Professional SOC reports, historical correlation
-- Ultimate: AI-powered analysis with 14-section reports
+SOC Intelligence Framework combining:
+- Live PCAP analysis, interactive network forensics
+- Professional SOC reports, historical correlation
+- AI-powered analysis with 14-section reports
 """
 
 import streamlit as st
