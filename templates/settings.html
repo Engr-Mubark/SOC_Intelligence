@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="One_Blink - Settings & Administration">
+    <title>Settings - One_Blink</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+
+    <style>
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-xl);
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .settings-section {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .settings-section h3 {
+            margin-top: 0;
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .settings-item {
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+
+        .settings-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .settings-item-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .settings-item-description {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .danger-zone {
+            border: 2px solid var(--danger);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .danger-zone h3 {
+            color: var(--danger);
+        }
+
+        .log-viewer {
+            background: var(--dark);
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: var(--spacing-md);
+            border-radius: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: var(--spacing-sm);
+        }
+
+        .status-online {
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
+        }
+
+        .status-offline {
+            background: var(--danger);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">&#9672;</span>
+                    <div>
+                        <div>One_Blink</div>
+                        <div class="tagline">SOC Intelligence Framework</div>
+                    </div>
+                </div>
+
+                <nav>
+                    <ul class="nav">
+                        <li><a href="/" class="nav-link">Upload</a></li>
+                        <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                        <li><a href="/reports" class="nav-link">Reports</a></li>
+                        <li><a href="/settings" class="nav-link active">Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="margin-top: 2rem;">
+        <div class="text-center mb-4">
+            <h1>Settings & Administration</h1>
+            <p class="text-muted">System configuration and troubleshooting tools</p>
+        </div>
+
+        <!-- Settings Grid -->
+        <div class="settings-grid fade-in">
+            <!-- System Status Section -->
+            <div class="settings-section">
+                <h3>System Status</h3>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Flask Server</span>
+                        <span><span class="status-indicator status-online"></span> Online</span>
+                    </div>
+                    <div class="settings-item-description">Web server running on port 5000</div>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Database</span>
+                        <span id="dbStatus"><span class="status-indicator status-online"></span> Connected</span>
+                    </div>
+                    <div class="settings-item-description">DuckDB - TOON Events Store</div>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Total Events</span>
+                        <span id="totalEventsCount">0</span>
+                    </div>
+                    <div class="settings-item-description">Events stored in database</div>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Total Reports</span>
+                        <span id="totalReportsCount">0</span>
+                    </div>
+                    <div class="settings-item-description">Generated analysis reports</div>
+                </div>
+            </div>
+
+            <!-- Logs & Diagnostics Section -->
+            <div class="settings-section">
+                <h3>Logs & Diagnostics</h3>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Application Logs</span>
+                    </div>
+                    <div class="settings-item-description">Download system logs for troubleshooting</div>
+                    <button class="btn btn-outline mt-2" onclick="downloadLogs('app')">
+                        Download App Logs
+                    </button>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Error Logs</span>
+                    </div>
+                    <div class="settings-item-description">Download error logs for debugging</div>
+                    <button class="btn btn-outline mt-2" onclick="downloadLogs('error')">
+                        Download Error Logs
+                    </button>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Live Logs</span>
+                    </div>
+                    <div class="settings-item-description">View recent log entries</div>
+                    <button class="btn btn-outline mt-2" onclick="loadLiveLogs()">
+                        View Live Logs
+                    </button>
+                </div>
+
+                <div id="liveLogsContainer" style="display: none; margin-top: 1rem;">
+                    <div class="log-viewer" id="liveLogsContent">
+                        Loading logs...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database Management Section -->
+            <div class="settings-section danger-zone">
+                <h3>Danger Zone</h3>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Reset Database</span>
+                    </div>
+                    <div class="settings-item-description">
+                        Permanently delete ALL events, reports, and analysis data. This action CANNOT be undone.
+                    </div>
+                    <button class="btn btn-danger mt-2" onclick="confirmReset()">
+                        Reset All Data
+                    </button>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Clear Cache</span>
+                    </div>
+                    <div class="settings-item-description">Clear temporary files and cache</div>
+                    <button class="btn btn-warning mt-2" onclick="clearCache()">
+                        Clear Cache
+                    </button>
+                </div>
+            </div>
+
+            <!-- Export & Backup Section -->
+            <div class="settings-section">
+                <h3>Export & Backup</h3>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Export All Events</span>
+                    </div>
+                    <div class="settings-item-description">Download all TOON events as JSON</div>
+                    <button class="btn btn-outline mt-2" onclick="exportData('events')">
+                        Export Events (JSON)
+                    </button>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Export All Reports</span>
+                    </div>
+                    <div class="settings-item-description">Download all reports archive</div>
+                    <button class="btn btn-outline mt-2" onclick="exportData('reports')">
+                        Export Reports (ZIP)
+                    </button>
+                </div>
+
+                <div class="settings-item">
+                    <div class="settings-item-header">
+                        <span class="settings-item-title">Full Database Backup</span>
+                    </div>
+                    <div class="settings-item-description">Create complete database backup</div>
+                    <button class="btn btn-success mt-2" onclick="createBackup()">
+                        Create Backup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Load system stats
+        async function loadSystemStats() {
+            try {
+                const response = await fetch('/api/system/stats');
+                if (response.ok) {
+                    const stats = await response.json();
+                    document.getElementById('totalEventsCount').textContent = stats.total_events.toLocaleString();
+                    document.getElementById('totalReportsCount').textContent = stats.total_reports;
+                }
+            } catch (error) {
+                console.error('Failed to load system stats:', error);
+            }
+        }
+
+        // Download logs
+        async function downloadLogs(type) {
+            try {
+                const response = await fetch(`/api/logs/download?type=${type}`);
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `oneblink_${type}_logs_${Date.now()}.log`;
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    alert('Failed to download logs');
+                }
+            } catch (error) {
+                console.error('Error downloading logs:', error);
+                alert('Error downloading logs');
+            }
+        }
+
+        // Load live logs
+        async function loadLiveLogs() {
+            const container = document.getElementById('liveLogsContainer');
+            const content = document.getElementById('liveLogsContent');
+
+            container.style.display = 'block';
+            content.textContent = 'Loading logs...';
+
+            try {
+                const response = await fetch('/api/logs/live');
+                if (response.ok) {
+                    const logs = await response.json();
+                    content.textContent = logs.entries.join('\n');
+                } else {
+                    content.textContent = 'Error loading logs';
+                }
+            } catch (error) {
+                console.error('Error loading live logs:', error);
+                content.textContent = 'Error loading logs';
+            }
+        }
+
+        // Confirm reset
+        function confirmReset() {
+            const confirmation = confirm(
+                'WARNING: This will permanently delete ALL data!\n\n' +
+                '- All TOON events\n' +
+                '- All reports\n' +
+                '- All analysis data\n\n' +
+                'This action CANNOT be undone.\n\n' +
+                'Type "DELETE" to confirm:'
+            );
+
+            if (confirmation) {
+                const userInput = prompt('Type DELETE to confirm:');
+                if (userInput === 'DELETE') {
+                    resetDatabase();
+                } else {
+                    alert('Reset cancelled - incorrect confirmation text');
+                }
+            }
+        }
+
+        // Reset database
+        async function resetDatabase() {
+            try {
+                const response = await fetch('/api/database/reset', {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    alert('Database reset successfully!\n\nAll data has been deleted.');
+                    loadSystemStats();
+                } else {
+                    alert('Failed to reset database');
+                }
+            } catch (error) {
+                console.error('Error resetting database:', error);
+                alert('Error resetting database');
+            }
+        }
+
+        // Clear cache
+        async function clearCache() {
+            try {
+                const response = await fetch('/api/cache/clear', {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    alert('Cache cleared successfully!');
+                } else {
+                    alert('Failed to clear cache');
+                }
+            } catch (error) {
+                console.error('Error clearing cache:', error);
+                alert('Error clearing cache');
+            }
+        }
+
+        // Export data
+        async function exportData(type) {
+            try {
+                const response = await fetch(`/api/export/${type}`);
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `oneblink_${type}_${Date.now()}.${type === 'reports' ? 'zip' : 'json'}`;
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    alert(`Failed to export ${type}`);
+                }
+            } catch (error) {
+                console.error(`Error exporting ${type}:`, error);
+                alert(`Error exporting ${type}`);
+            }
+        }
+
+        // Create backup
+        async function createBackup() {
+            try {
+                const response = await fetch('/api/database/backup', {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    alert(`Backup created successfully!\n\nFile: ${result.backup_file}`);
+                } else {
+                    alert('Failed to create backup');
+                }
+            } catch (error) {
+                console.error('Error creating backup:', error);
+                alert('Error creating backup');
+            }
+        }
+
+        // Load stats on page load
+        document.addEventListener('DOMContentLoaded', loadSystemStats);
+    </script>
+</body>
+
+</html>
