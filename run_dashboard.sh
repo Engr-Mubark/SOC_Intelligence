@@ -15,7 +15,7 @@ if [ -d "venv" ]; then
     source venv/bin/activate
 fi
 
-# Run Streamlit
+# Launch One_Blink Dashboard
 streamlit run src/app/main.py \
     --server.port 8501 \
     --server.address 0.0.0.0 \

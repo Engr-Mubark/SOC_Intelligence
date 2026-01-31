@@ -51,5 +51,5 @@ tmp/
 temp/
 *.tmp
 
-# Streamlit
+# Dashboard config
 .streamlit/secrets.toml
