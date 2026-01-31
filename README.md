@@ -1,3 +1,22 @@
+```
+        ╱╲
+       ╱  ╲
+      ╱    ╲
+     ╱  SOC ╲
+    ╱  Intel ╲
+   ╱  ligence ╲
+  ╱            ╲
+ ╱──────────────╲
+ ╲──────────────╱
+  ╲            ╱
+   ╲  Platform╱
+    ╲        ╱
+     ╲      ╱
+      ╲    ╱
+       ╲  ╱
+        ╲╱
+```
+
 #  SOC_Intelligence Platform
 
 **Unified Enterprise SOC Analysis Platform**
