@@ -14,7 +14,7 @@ from typing import List, Dict, Optional, Tuple
 from collections import defaultdict, Counter
 import math
 
-from src.unified.models.schemas import TOONEvent
+from unified.models.schemas import TOONEvent
 
 logger = logging.getLogger(__name__)
 

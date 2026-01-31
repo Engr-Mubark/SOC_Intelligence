@@ -11,11 +11,11 @@ from typing import Dict, List, Optional, Any
 from pathlib import Path
 import json
 
-from src.unified.models.schemas import AnalysisReport, TOONEvent, WeightedThreatScore, TTP
-from src.unified.ai.llm_service import LocalLLMService
-from src.unified.analysis.ttp_mapper import TTPMapper
-from src.unified.analysis.anomaly_detector import AnomalyDetector
-from src.unified.db.duckdb_adapter import DuckDBAdapter
+from unified.models.schemas import AnalysisReport, TOONEvent, WeightedThreatScore, TTP
+from unified.ai.llm_service import LocalLLMService
+from unified.analysis.ttp_mapper import TTPMapper
+from unified.analysis.anomaly_detector import AnomalyDetector
+from unified.db.duckdb_adapter import DuckDBAdapter
 
 logger = logging.getLogger(__name__)
 

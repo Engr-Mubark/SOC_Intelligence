@@ -11,8 +11,8 @@ from pathlib import Path
 import json
 
 # Import Ultimate Prompt
-from src.unified.ai.ultimate_prompt import ULTIMATE_SOC_PROMPT
-from src.unified.models.schemas import AnalysisReport, TOONEvent, WeightedThreatScore, TTP
+from unified.ai.ultimate_prompt import ULTIMATE_SOC_PROMPT
+from unified.models.schemas import AnalysisReport, TOONEvent, WeightedThreatScore, TTP
 
 logger = logging.getLogger(__name__)
 
@@ -231,6 +231,8 @@ class LocalLLMService:
         
         logger.info("Generating report with template fallback")
         
+        from datetime import datetime
+        
         # Basic template following 14-section structure
         report = f"""
 ═══════════════════════════════════════════════════════════════════════════════
@@ -238,7 +240,7 @@ SOC INTELLIGENCE ANALYSIS REPORT
 ═══════════════════════════════════════════════════════════════════════════════
 
 **Report ID**: TEMPLATE-FALLBACK
-**Generated**: {from datetime import datetime; datetime.now().isoformat()}
+**Generated**: {datetime.now().isoformat()}
 **Analyst Engine**: SOC_Intelligence Ultimate v1.0 (Template Mode)
 **Data Sources**: PCAP (TShark), DuckDB
 

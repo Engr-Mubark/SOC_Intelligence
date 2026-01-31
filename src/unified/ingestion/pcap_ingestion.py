@@ -18,8 +18,8 @@ import logging
 from datetime import datetime
 import json
 
-from src.unified.models.schemas import TOONEvent, ProtocolType
-from src.unified.db.duckdb_adapter import DuckDBAdapter
+from unified.models.schemas import TOONEvent, ProtocolType
+from unified.db.duckdb_adapter import DuckDBAdapter
 
 logger = logging.getLogger(__name__)
 

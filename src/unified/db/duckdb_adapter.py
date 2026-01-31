@@ -11,7 +11,7 @@ from typing import List, Dict, Optional, Any
 from datetime import datetime
 import logging
 
-from src.unified.models.schemas import TOONEvent, Ticket, IOC, TTP
+from unified.models.schemas import TOONEvent, Ticket, IOC, TTP
 
 logger = logging.getLogger(__name__)
 

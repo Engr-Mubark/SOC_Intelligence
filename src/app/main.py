@@ -14,7 +14,7 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.unified.analysis.unified_analyzer import UnifiedAnalyzer
+from unified.analysis.unified_analyzer import UnifiedAnalyzer
 import logging
 
 # Configure logging

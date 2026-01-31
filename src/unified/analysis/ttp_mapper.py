@@ -12,7 +12,7 @@ import logging
 from typing import List, Dict, Optional, Set
 from collections import defaultdict
 
-from src.unified.models.schemas import TTP, TOONEvent
+from unified.models.schemas import TTP, TOONEvent
 
 logger = logging.getLogger(__name__)
 

@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Dict, Optional, List, Any
 from datetime import datetime, timedelta
 
-from src.unified.models.schemas import TOONEvent, Ticket, IOC
-from src.unified.db.duckdb_adapter import DuckDBAdapter
-from src.unified.ingestion.pcap_ingestion import PCAPIngestionEngine
-from src.unified.ai.llm_service import LocalLLMService
-from src.unified.analysis.ttp_mapper import TTPMapper
-from src.unified.analysis.anomaly_detector import AnomalyDetector
-from src.unified.reports.report_generator import ReportGenerator
+from unified.models.schemas import TOONEvent, Ticket, IOC
+from unified.db.duckdb_adapter import DuckDBAdapter
+from unified.ingestion.pcap_ingestion import PCAPIngestionEngine
+from unified.ai.llm_service import LocalLLMService
+from unified.analysis.ttp_mapper import TTPMapper
+from unified.analysis.anomaly_detector import AnomalyDetector
+from unified.reports.report_generator import ReportGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +57,9 @@ class UnifiedAnalyzer:
             self.db
         )
         
-        logger.info("UnifiedAnalyzer initialized") def analyze_pcap(
+        logger.info("UnifiedAnalyzer initialized")
+    
+    def analyze_pcap(
         self,
         pcap_path: Path,
         create_ticket: bool = True,
