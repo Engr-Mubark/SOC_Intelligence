@@ -83,12 +83,14 @@ def render(analyzer):
     - ML-based anomaly detection
     - Enterprise-grade reporting (HTML/JSON/Markdown)
     
-    **Built with**:
-    - Python 3.11+
-    - Streamlit
+    ### System Dependencies
+    
+    - Python 3.10+
+    - TShark (Wireshark CLI)
+    - Zeek Network Monitor
+    - Snort 3 IDS
     - DuckDB
-    - PyShark/TShark
-    - Transformers (LLM)
+    - ◈ One_Blink Dashboard
     """)
     
     st.markdown("---")

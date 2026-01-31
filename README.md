@@ -44,7 +44,7 @@ SOC_Intelligence is a comprehensive network security analysis platform that prov
 - Template fallback for offline operation
 
 ###  **User Interfaces**
-- **Streamlit Dashboard**: Interactive web UI
+- **◈ One_Blink Dashboard**: Interactive web UI
 - **CLI Tool**: Command-line interface for automation
 - **API Ready**: FastAPI integration (planned)
 
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 ### Running the Dashboard
 
 ```bash
-# Launch Streamlit UI
+# Launch ◈ One_Blink Dashboard
 ./run_dashboard.sh
 
 # Or manually:
@@ -106,7 +106,7 @@ SOC_Intelligence/
 │   │   ├── ai/            # LLM, Vision AI, Ultimate Prompt
 │   │   ├── analysis/      # TTP Mapper, Anomaly Detector, Unified Analyzer
 │   │   └── reports/       # Report generator
-│   ├── app/               # Streamlit UI
+│   ├── app/               # ◈ Dashboard UI
 │   │   ├── main.py        # Main dashboard
 │   │   └── pages/         # UI pages
 │   └── cli/               # Command-line interface
@@ -209,7 +209,7 @@ Token-Oriented Object Notation for network events:
 
 Core:
 - Python 3.11+
-- Streamlit (UI)
+- ◈ One_Blink Dashboard
 - DuckDB (database)
 - PyShark/TShark (PCAP ingestion)
 - Pydantic (schemas)
@@ -331,7 +331,7 @@ See individual component licenses in legacy folders.
 **SOC_Intelligence Platform v1.0**
 
 Unified by: SOC Intelligence Team
-Built with: Python, Streamlit, DuckDB, Transformers
+Built with: Python, DuckDB, Transformers, AI Models
 
 ---
 

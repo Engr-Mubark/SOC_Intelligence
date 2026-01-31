@@ -36,7 +36,7 @@ st.set_page_config(
 # Custom CSS for professional look
 st.markdown("""
 <style>
-    /* Hide ALL Streamlit branding and icons */
+    /* Hide all dashboard framework branding */
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     header {visibility: hidden !important;}
