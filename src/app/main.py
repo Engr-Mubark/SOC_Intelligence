@@ -36,6 +36,11 @@ st.set_page_config(
 # Custom CSS for professional look
 st.markdown("""
 <style>
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
     .main-header {
         font-size: 2.5rem;
         font-weight: bold;
